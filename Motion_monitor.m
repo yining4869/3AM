@@ -154,7 +154,7 @@ function pushbutton4_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 global acce;global velo;global dis;global x;global h;
-file_name=uigetfile('*.xlsx','Open data file');
+file_name=uigetfile({'*.xlsx';'*.xlsm'},'Open data file');
 
 [ acce,velo,dis,x,h ] = Calculation( file_name );
 
