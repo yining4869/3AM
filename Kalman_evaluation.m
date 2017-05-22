@@ -92,7 +92,7 @@ index=1;
 sam_rate=str2num(cell2mat(inputdlg('Input sample rate:','Sample rate')));
 
 % Read in acceleration data and height data
-[file_name,~,index]=uigetfile('*.xlsx','Open data file');
+[file_name,~,index]=uigetfile({'*.xlsx';'*.xlsm'},'Open data file');
 raw_data=xlsread(file_name,1);
 u=9.8.*raw_data(:,4);
 u=u-u(1,1);
