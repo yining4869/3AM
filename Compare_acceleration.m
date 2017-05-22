@@ -84,7 +84,7 @@ index=1;
 sam_rate=str2num(cell2mat(inputdlg('Input sample rate:','Sample rate')));
 while(index)
     % Read in data
-    [file_name,~,index]=uigetfile('*.xlsx','Open data file');
+    [file_name,~,index]=uigetfile({'*.xlsx';'*.xlsm'},'Open data file');
     if(~index) 
         break
     end 
