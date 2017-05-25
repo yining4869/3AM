@@ -95,6 +95,7 @@ plot(x,acce(:,3));
 title('Az');
 ylabel('Az m/s^2');
 xlabel('t /s');
+zoom on;
 
 
 % --- Executes on button press in pushbutton2.
