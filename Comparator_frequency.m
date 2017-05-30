@@ -100,7 +100,7 @@ while(index)
 %     acce(:,2)=acce(:,2)-mean(acce(:,2));
     acce(:,3)=acce(:,3)-mean(acce(:,3));
     
-    st_index=Get_start(acce,sam_rate);
+    st_index=Get_start(raw_data,sam_rate);
     acce=acce(st_index:end,:);
     si=size(acce,1);
     
