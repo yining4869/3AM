@@ -94,9 +94,9 @@ while(index)
     acce=g.*raw_data(:,2:4);
     
     % Cancle noise
-    acce(:,1)=acce(:,1)-mean(acce(:,1));
-    acce(:,2)=acce(:,2)-mean(acce(:,2));
-    acce(:,3)=acce(:,3)-mean(acce(:,3));
+    % acce(:,1)=acce(:,1)-mean(acce(:,1));
+    % acce(:,2)=acce(:,2)-mean(acce(:,2));
+    acce(:,3)=acce(:,3)-acce(1,3);
     
     st_index=Get_start(raw_data,sam_rate);
     acce=acce(st_index:end,:);
