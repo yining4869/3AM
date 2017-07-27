@@ -31,16 +31,6 @@ acce(:,3)=acce(:,3)-acce(1,3);
 % Time
 x=(0:1/sam_rate:(si-1)/sam_rate)';
 
-% plot(x,acce(:,3));
-% title('Acceleration Az');
-% ylabel('Az m/s^2');
-% xlabel('t /s');
-% hold on;zoom on;
-
-% time_start=min(acce_index,dece_index)/sam_rate;
-% time_steady=(min(acce_index,dece_index)+sam_rate*duration)/sam_rate;
-% time_stop=max(acce_index,dece_index)/sam_rate;
-% time_still=(max(acce_index,dece_index)+sam_rate*duration)/sam_rate;
 
 time_acce=1;
 time_dece=1;
