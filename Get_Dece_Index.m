@@ -24,14 +24,15 @@ test_dece=t.*(t-duration*sam_rate-1);
 Min_t=min(test_dece);
 test_dece=(Min./Min_t).*test_dece;
 
-de_index=1;
+de_index=[];
+i_pre=0;
 
 for i=1:1:si(1)-sam_rate*duration
     if(acce(3,i)<-threshold_acce)
         cos_angle=dot(test_dece,acce(3,i:i+sam_rate*duration-1))/(norm(acce(3,i:i+sam_rate*duration-1))*norm(test_dece));
-        if(cos_angle>threshold_cos)
-            de_index=i;
-            break
+        if(cos_angle>threshold_cos)&&(i>(i_pre+duration*sam_rate))
+            de_index=[de_index;i];
+            i_pre=i;
         end
     end
 end
