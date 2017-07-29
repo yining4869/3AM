@@ -1,4 +1,4 @@
-function st_index = Get_Acce_Index( raw_data, sam_rate )
+function ac_index = Get_Acce_Index( raw_data, sam_rate )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 % Set duration
@@ -24,14 +24,15 @@ test_acce=-t.*(t-duration*sam_rate-1);
 Max_t=max(test_acce);
 test_acce=(Max./Max_t).*test_acce;
 
-st_index=1;
+ac_index=[];
+i_pre=0;
 
 for i=1:1:si(1)-sam_rate*duration
     if(acce(3,i)>threshold_acce)
         cos_angle=dot(test_acce,acce(3,i:i+sam_rate*duration-1))/(norm(acce(3,i:i+sam_rate*duration-1))*norm(test_acce));
-        if(cos_angle>threshold_cos)
-            st_index=i;
-            break
+        if(cos_angle>threshold_cos)&&(i>(i_pre+duration*sam_rate))
+            ac_index=[ac_index;i];
+            i_pre=i;
         end
     end
 end
