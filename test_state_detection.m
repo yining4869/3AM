@@ -3,6 +3,7 @@ clear,clc,close all
 % Duration of acceleration and deceleration
 duration=4;
 
+% States
 STILL=1;
 ACCE=2;
 DECE=3;
@@ -11,6 +12,7 @@ MOV_DOWN=5;
 ACCE_TOSTILL=6;
 DECE_TOSTILL=7;
 
+% Initialize critical points
 [acce_st, dece_st, steady_st, still_back, acce_tostill, dece_tostill]=deal([]);
 
 threshold=0.1;
@@ -21,6 +23,7 @@ sam_rate=str2num(cell2mat(inputdlg('Input sample rate:','Sample rate')));
 raw_data=xlsread(file_name,1);
 acce=9.8.*raw_data(:,2:4);
 
+% Get acceleration and deceleration start points
 acce_index=Get_Acce_Index(raw_data, sam_rate);
 dece_index=Get_Dece_Index(raw_data, sam_rate);
 
@@ -31,8 +34,10 @@ acce(:,3)=acce(:,3)-acce(1,3);
 % Time
 x=(0:1/sam_rate:(si-1)/sam_rate)';
 
+% Initialize states
 state=STILL;
 
+% Acceleration point and deceleration point to be compared next
 n_acce=1;
 n_dece=1;
 
@@ -42,7 +47,7 @@ ylabel('Az m/s^2');
 xlabel('t /s');
 grid on;zoom on;
 
-
+% FSM
 for i=1:si
     switch state
     case STILL
